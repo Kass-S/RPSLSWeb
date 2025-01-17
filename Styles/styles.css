@@ -1,0 +1,61 @@
+@font-face {
+    font-family: "Irish Grover";
+    src: url(../Assets/Fonts/IrishGrover-Regular.ttf);
+}
+
+body{
+    background: url("/Assets/RPSLS-bg.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 105%;
+    font-family: "Irish Grover", Arial, Helvetica, sans-serif;
+    /* color: white; */
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center;
+  }
+
+.content-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1.5fr 1fr 1fr 1.5fr;
+    margin: 6em 8em;
+    background-color: #3DDC5A;
+    border-radius: 20px;
+    border: 4px solid #07AE3C;
+}
+
+.title-text{
+    color: white;
+    grid-column: span 5;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.play-btn{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    grid-row: 3;
+    grid-column: 3;
+    background-color: #07AE3C;
+    margin: 5px;
+    padding: 15px;
+    color: white;
+    font-size: 24px;
+}
+
+.rule-btn{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    grid-row: 4;
+    grid-column: 3;
+    background-color: #07AE3C;
+    margin: 5px;
+    padding: 15px;
+    color: white;
+    font-size: 24px;
+}
