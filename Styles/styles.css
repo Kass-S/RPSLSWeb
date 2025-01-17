@@ -12,6 +12,17 @@ body{
     /* color: white; */
 }
 
+.general-btn{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    background-color: #07AE3C;
+    margin: 5px;
+    padding: 15px;
+    color: white;
+    font-size: 24px;
+}
+
 .justify-center {
     display: flex;
     justify-content: center;
@@ -35,27 +46,31 @@ body{
 }
 
 .play-btn{
-    display: flex;
-    justify-content: center;
-    align-self: center;
     grid-row: 3;
     grid-column: 3;
-    background-color: #07AE3C;
-    margin: 5px;
-    padding: 15px;
-    color: white;
-    font-size: 24px;
 }
 
 .rule-btn{
-    display: flex;
-    justify-content: center;
-    align-self: center;
     grid-row: 4;
     grid-column: 3;
-    background-color: #07AE3C;
-    margin: 5px;
-    padding: 15px;
-    color: white;
-    font-size: 24px;
+}
+
+.sudden-death-btn{
+    grid-row: 3;
+    grid-column: 2;
+}
+
+.best-of-3{
+    grid-row: 3;
+    grid-column: 4;
+}
+
+.best-of-5{
+    grid-row: 4;
+    grid-column: 2;
+}
+
+.best-of-7{
+    grid-row: 4;
+    grid-column: 4;
 }
