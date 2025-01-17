@@ -140,3 +140,16 @@ body{
     grid-row: 4;
     grid-column: 4;
 }
+
+
+.sub-text{
+    display: flex;
+    justify-content: center;
+    grid-column: 3;
+    color: white;
+    font-size: 24px;
+}
+.choice-btns{
+    grid-row: 4;
+    margin: 0px 15px;
+}
