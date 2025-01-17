@@ -23,6 +23,16 @@ body{
     font-size: 24px;
 }
 
+.back-btn{
+    grid-row: 1;
+    grid-column: 5;
+    width: 45%;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+}
+
 .justify-center {
     display: flex;
     justify-content: center;
@@ -40,7 +50,9 @@ body{
 
 .title-text{
     color: white;
-    grid-column: span 5;
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: 6;
     padding: 10px;
     margin-top: 10px;
 }
