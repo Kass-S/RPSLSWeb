@@ -2,7 +2,7 @@ async function CallCPURandom(){
     const promise = await fetch('https://kspacekrpsls-fkfehdbve8a0f9ag.westus-01.azurewebsites.net/RockPaperScissorsLizardSpock/PlayRPSLS');
     const data = await promise.text();
     console.log(data);
-    let CPUChoice = data;
+    CPUChoice = data;
     gamePlay()
     return data;
 }
@@ -39,6 +39,8 @@ let PVPBestOf3Bool = false;
 let PVPBestOf5Bool = false;
 let PVPBestOf7Bool = false;
 
+let CPUChoice = '';
+let userChoice = '';
 let CPUWins = 0;
 let PlayerWins = 0;
 
@@ -144,111 +146,33 @@ BestOf7Btn.addEventListener('click', function (){
 
 CPUrockBtn.addEventListener('click', async function(){
     
-    let randomCPU = await CallCPURandom(); 
-    console.log(randomCPU);
+    userChoice = 'rock';
+    CallCPURandom(); 
 
-    if(CPUSuddenDeathBool == true){
-        let userChoice = 'rock';
-        CPUSuddenDeath(userChoice, randomCPU);
-    }
-
-    if(CPUBestOf3Bool == true){
-
-    }
-
-    if(CPUBestOf5Bool == true){
-
-    }
-    
-    if(CPUBestOf7Bool == true){
-
-    }
 })
 CPUpaperBtn.addEventListener('click', async function(){
 
-    let randomCPU = await CallCPURandom(); 
-    console.log(randomCPU);
-
-    if(CPUSuddenDeathBool == true){
-        let userChoice = 'paper';
-        CPUSuddenDeath(userChoice, randomCPU);
-    }
-
-    if(CPUBestOf3Bool == true){
-
-    }
-
-    if(CPUBestOf5Bool == true){
-
-    }
+    userChoice = 'paper';
+    CallCPURandom(); 
     
-    if(CPUBestOf7Bool == true){
-
-    }
 })
 CPUscissorBtn.addEventListener('click', async function(){
 
-    let randomCPU = await CallCPURandom(); 
-    console.log(randomCPU);
-
-    if(CPUSuddenDeathBool == true){
-        let userChoice = 'scissors';
-        CPUSuddenDeath(userChoice, randomCPU);
-    }
-
-    if(CPUBestOf3Bool == true){
-
-    }
-
-    if(CPUBestOf5Bool == true){
-
-    }
+    userChoice = 'scissors';
+    CallCPURandom(); 
     
-    if(CPUBestOf7Bool == true){
-
-    }
 })
 CPUlizardBtn.addEventListener('click', async function(){
 
-    let randomCPU = await CallCPURandom(); 
-    console.log(randomCPU);
-
-    if(CPUSuddenDeathBool == true){
-
-
-        let userChoice = 'lizard';
-        CPUSuddenDeath(userChoice, randomCPU);
-
-    }else if(CPUBestOf3Bool == true){
-
-    }else if(CPUBestOf5Bool == true){
-
-    }else if(CPUBestOf7Bool == true){
-
-    }
+    userChoice = 'lizard';
+    CallCPURandom(); 
+    
 })
 CPUspockBtn.addEventListener('click', async function(){
 
-    let randomCPU = await CallCPURandom(); 
-    console.log(randomCPU);
+    userChoice = 'spock';
+    CallCPURandom();  
 
-    if(CPUSuddenDeathBool == true){
-        let userChoice = 'spock';
-        CPUSuddenDeath(userChoice, randomCPU);
-    }
-
-    if(CPUBestOf3Bool == true){
-
-    }
-
-    if(CPUBestOf5Bool == true){
-
-    }
-
-    if(CPUBestOf7Bool == true){
-
-    }
-    
 })
 
 
@@ -256,38 +180,21 @@ async function gamePlay(){
     
     if(CPUSuddenDeathBool == true){
         switch(userChoice.toLocaleLowerCase())
-    {
+        {
         case "rock": 
-            switch(CPUChoice)
-            {
-                case "rock":
-                    subText1.innerText = "You Tie.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;   
-
-                case "paper":
-                    subText1.innerText = "You Lose.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "scissors": 
-                    subText1.innerText = "You Win!";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "lizard":
-                    subText1.innerText = "You Win!";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "spock":
-                    subText1.innerText = "You Lose.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                default:
-                    return "";
-            }                      
+            if(CPUChoice == 'scissors' || CPUChoice == 'lizard'){
+                subText1.innerText = "You Win!";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            }else if(CPUChoice == 'paper' || CPUChoice == 'spock'){
+                subText1.innerText = "You Lose.";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            }else{
+                subText1.innerText = "You Tie.";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            }                 
 
         case "paper":
             switch(CPUChoice)
@@ -419,13 +326,17 @@ async function gamePlay(){
         default:
             return "Error";     
 
-    }
+        }
     }else if(CPUBestOf3Bool == true){
         
         if(PlayerWins == 2 || CPUWins == 2){
-        if(PlayerWins == 2){
-            
-        }
+            if(PlayerWins == 2){
+                subText1 = 'You Win';
+            }else{
+                subText1 = 'You Lose';
+            }
+            subText2 = `CPU won- ${CPUWins} games`
+            subText3 = `You won- ${PlayerWins} games`
         }
     }
     
