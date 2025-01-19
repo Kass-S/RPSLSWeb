@@ -2,6 +2,8 @@ async function CallCPURandom(){
     const promise = await fetch('https://kspacekrpsls-fkfehdbve8a0f9ag.westus-01.azurewebsites.net/RockPaperScissorsLizardSpock/PlayRPSLS');
     const data = await promise.text();
     console.log(data);
+    let CPUChoice = data;
+    gamePlay()
     return data;
 }
 
@@ -24,12 +26,21 @@ let CPUscissorBtn = document.getElementById('CPUscissorBtn');
 let CPUlizardBtn = document.getElementById('CPUlizardBtn');
 let CPUspockBtn = document.getElementById('CPUspockBtn');
 
+let CPUPlayBool = false;
+let PlayerPlayBool = false;
+
 let CPUSuddenDeathBool = false;
 let CPUBestOf3Bool = false;
 let CPUBestOf5Bool = false;
 let CPUBestOf7Bool = false;
 
+let PvPSuddenDeathBool = false;
+let PVPBestOf3Bool = false;
+let PVPBestOf5Bool = false;
+let PVPBestOf7Bool = false;
 
+let CPUWins = 0;
+let PlayerWins = 0;
 
 CPUPlayBtn.addEventListener('click', function(){
     CPUPlayBtn.className = 'noDisplay';
@@ -39,6 +50,8 @@ CPUPlayBtn.addEventListener('click', function(){
     BestOf3Btn.className = "btn general-btn best-of-3";
     BestOf5Btn.className = "btn general-btn best-of-5";
     BestOf7Btn.className = "btn general-btn best-of-7";
+
+    CPUPlayBool = true;
 })
 PlayerPlayBtn.addEventListener('click', function(){
     CPUPlayBtn.className = 'noDisplay';
@@ -48,6 +61,8 @@ PlayerPlayBtn.addEventListener('click', function(){
     BestOf3Btn.className = "btn general-btn best-of-3";
     BestOf5Btn.className = "btn general-btn best-of-5";
     BestOf7Btn.className = "btn general-btn best-of-7";
+
+    PlayerPlayBool = true;
 })
 
 SuddenDeathBtn.addEventListener('click', function (){
@@ -62,7 +77,12 @@ SuddenDeathBtn.addEventListener('click', function (){
     CPUlizardBtn.className = 'general-btn btn choice-btns';
     CPUspockBtn.className = 'general-btn btn choice-btns';
     
-    subText2.innerText = 'Choose your fighter!';
+    if(CPUPlayBool == true){
+        CPUSuddenDeathBool = true;
+    }else if(PlayerPlayBool == true){
+        PvPSuddenDeathBool = true;
+    }
+    
 })
 BestOf3Btn.addEventListener('click', function (){
     SuddenDeathBtn.className = "noDisplay";
@@ -75,6 +95,13 @@ BestOf3Btn.addEventListener('click', function (){
     CPUscissorBtn.className = 'general-btn btn choice-btns';
     CPUlizardBtn.className = 'general-btn btn choice-btns';
     CPUspockBtn.className = 'general-btn btn choice-btns';
+
+    if(CPUPlayBool == true){
+        CPUBestOf3Bool = true;
+    }else if(PlayerPlayBool == true){
+        PVPBestOf3Bool = true;
+    }
+
 })
 BestOf5Btn.addEventListener('click', function (){
     SuddenDeathBtn.className = "noDisplay";
@@ -87,6 +114,13 @@ BestOf5Btn.addEventListener('click', function (){
     CPUscissorBtn.className = 'general-btn btn choice-btns';
     CPUlizardBtn.className = 'general-btn btn choice-btns';
     CPUspockBtn.className = 'general-btn btn choice-btns';
+
+    if(CPUPlayBool == true){
+        CPUBestOf5Bool = true;
+    }else if(PlayerPlayBool == true){
+        PVPBestOf5Bool = true;
+    }
+    
 })
 BestOf7Btn.addEventListener('click', function (){
     SuddenDeathBtn.className = "noDisplay";
@@ -99,6 +133,12 @@ BestOf7Btn.addEventListener('click', function (){
     CPUscissorBtn.className = 'general-btn btn choice-btns';
     CPUlizardBtn.className = 'general-btn btn choice-btns';
     CPUspockBtn.className = 'general-btn btn choice-btns';
+
+    if(CPUPlayBool == true){
+        CPUBestOf7Bool = true;
+    }else if(PlayerPlayBool == true){
+        PVPBestOf7Bool = true;
+    }
 })
 
 
@@ -212,10 +252,10 @@ CPUspockBtn.addEventListener('click', async function(){
 })
 
 
-async function CPUSuddenDeath(userChoice, randomCPU){
-    let CPUChoice = randomCPU;
-
-    switch(userChoice.toLocaleLowerCase())
+async function gamePlay(){
+    
+    if(CPUSuddenDeathBool == true){
+        switch(userChoice.toLocaleLowerCase())
     {
         case "rock": 
             switch(CPUChoice)
@@ -380,143 +420,131 @@ async function CPUSuddenDeath(userChoice, randomCPU){
             return "Error";     
 
     }
-
-}
-
-function CPUBestOf3(userChoice, randomCPU){
-    CPUWins = 0;
-    PlayerWins = 0;
-
-    if(PlayerWins == 2 || CPUWins == 2){
+    }else if(CPUBestOf3Bool == true){
+        
+        if(PlayerWins == 2 || CPUWins == 2){
         if(PlayerWins == 2){
             
         }
+        }
     }
+    
+
+
+    // p1Turn = true;
+    // switch(P1Choice.toLocaleLowerCase())
+    // {
+    //     case "rock": 
+    //         switch(P2Choice.toLocaleLowerCase())
+    //         {
+    //             case "rock":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;    
+
+    //             case "paper":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
+    //             case "scissors": 
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
+
+    //             case "lizard":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
+
+    //             case "spock":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
+
+    //             default:
+    //                 return "";
+    //         }                      
+
+    //     case "paper":
+    //         switch(P2Choice.toLocaleLowerCase())
+    //         {
+    //             case "rock":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
+                       
+    //             case "paper":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;
+
+    //             case "scissors": 
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
+
+    //             case "lizard":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
+
+    //             case "spock":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
+    //             default:
+    //                 return "";
+    //         }
+
+    //     case "scissors": 
+    //         switch(P2Choice.toLocaleLowerCase())
+    //         {
+    //             case "rock":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
+                        
+    //             case "paper":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
+
+    //             case "scissors": 
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;
+
+    //             case "lizard":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
+
+    //             case "spock":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
+
+    //             default:
+    //                 return "";
+    //         }
+
+    //     case "lizard":
+    //         switch(P2Choice.toLocaleLowerCase())
+    //         {
+    //             case "rock":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
+                        
+    //             case "paper":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
+
+    //             case "scissors": 
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
+
+    //             case "lizard":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;
+
+    //             case "spock":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
+
+    //             default:
+    //                 return "";
+    //         }
+
+    //     case "spock":
+    //         switch(P2Choice.toLocaleLowerCase())
+    //         {
+    //             case "rock":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins`;
+                        
+    //             case "paper":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
+
+    //             case "scissors": 
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins`
+
+    //             case "lizard":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
+
+    //             case "spock":
+    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;
+
+    //             default:
+    //                 return "";
+    //         }  
+
+    //     default:
+    //         return "Please enter Rock, Paper, Scissors, Lizard, or Spock.\nPlease check your spelling.";     
+
+    // }
 }
 
-
-// test.addEventListener('click', async function(){
-//     let stuff = await PvPSuddenDeath("rock", "Paper");
-//     let stuffText = await stuff.toString();
-//     console.log(stuffText);
-// })
-
-// async function PvPSuddenDeath(P1Choice, P2Choice){
-
-//  p1Turn = true;
-//     switch(P1Choice.toLocaleLowerCase())
-//     {
-//         case "rock": 
-//             switch(P2Choice.toLocaleLowerCase())
-//             {
-//                 case "rock":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;    
-
-//                 case "paper":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
-//                 case "scissors": 
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
-
-//                 case "lizard":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
-
-//                 case "spock":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
-
-//                 default:
-//                     return "";
-//             }                      
-
-//         case "paper":
-//             switch(P2Choice.toLocaleLowerCase())
-//             {
-//                 case "rock":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
-                       
-//                 case "paper":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;
-
-//                 case "scissors": 
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
-
-//                 case "lizard":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
-
-//                 case "spock":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
-//                 default:
-//                     return "";
-//             }
-
-//         case "scissors": 
-//             switch(P2Choice.toLocaleLowerCase())
-//             {
-//                 case "rock":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
-                        
-//                 case "paper":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
-
-//                 case "scissors": 
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;
-
-//                 case "lizard":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
-
-//                 case "spock":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
-
-//                 default:
-//                     return "";
-//             }
-
-//         case "lizard":
-//             switch(P2Choice.toLocaleLowerCase())
-//             {
-//                 case "rock":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
-                        
-//                 case "paper":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
-
-//                 case "scissors": 
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
-
-//                 case "lizard":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;
-
-//                 case "spock":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
-
-//                 default:
-//                     return "";
-//             }
-
-//         case "spock":
-//             switch(P2Choice.toLocaleLowerCase())
-//             {
-//                 case "rock":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins`;
-                        
-//                 case "paper":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
-
-//                 case "scissors": 
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins`
-
-//                 case "lizard":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
-
-//                 case "spock":
-//                     return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;
-
-//                 default:
-//                     return "";
-//             }  
-
-//         default:
-//             return "Please enter Rock, Paper, Scissors, Lizard, or Spock.\nPlease check your spelling.";     
-
-//     }
-
-// }
