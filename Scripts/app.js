@@ -197,131 +197,64 @@ async function gamePlay(){
             }                 
 
         case "paper":
-            switch(CPUChoice)
-            {
-                case "rock":
-                    subText1.innerText = "You Win!";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-                       
-                case "paper":
-                    subText1.innerText = "You Tie.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "scissors":
-                    subText1.innerText = "You Lose.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "lizard":
-                    subText1.innerText = "You Lose.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "spock":
-                    subText1.innerText = "You Win!";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-                default:
-                    return "";
-            }
-
-        case "scissors": 
-            switch(CPUChoice)
-            {
-                case "rock":
-                    subText1.innerText = "You Lose.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-                        
-                case "paper":
-                    subText1.innerText = "You Win!";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "scissors": 
-                    subText1.innerText = "You Tie.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "lizard":
-                    subText1.innerText = "You Win!";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "spock":
-                    subText1.innerText = "You Lose.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                default:
-                    return "";
+            if(CPUChoice == 'rock' || CPUChoice == 'spock'){
+                subText1.innerText = "You Win!";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            }else if(CPUChoice == 'scissors' || CPUChoice == 'lose'){
+                subText1.innerText = "You Lose.";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            }else{
+                subText1.innerText = "You Tie.";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            }  
+            
+        case "scissors":
+            if(CPUChoice == 'paper' || CPUChoice == 'lizard'){
+                subText1.innerText = "You Win!";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            }else if(CPUChoice == 'rock' || CPUChoice == 'spock'){
+                subText1.innerText = "You Lose.";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            }else{
+                subText1.innerText = "You Tie.";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
             }
 
         case "lizard":
-            switch(CPUChoice)
-            {
-                case "rock":
-                    subText1.innerText = "You Lose.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-                        
-                case "paper":
-                    subText1.innerText = "You Win!";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "scissors":
-                    subText1.innerText = "You Lose.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "lizard":
-                    subText1.innerText = "You Tie.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "spock":
-                    subText1.innerText = "You Win!";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                default:
-                    return "";
-            }
+            if(CPUChoice == 'paper' || CPUChoice == 'spock'){
+                subText1.innerText = "You Win!";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            }else if(CPUChoice == 'rock' || CPUChoice == 'scissors'){
+                subText1.innerText = "You Lose.";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            }else{
+                subText1.innerText = "You Tie.";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            } 
 
         case "spock":
-            switch(CPUChoice)
-            {
-                case "rock":
-                    subText1.innerText = "You Win!";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-                        
-                case "paper":
-                    subText1.innerText = "You Lose.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "scissors":
-                    subText1.innerText = "You Win!";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "lizard":
-                    subText1.innerText = "You Lose.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                case "spock":
-                    subText1.innerText = "You Tie.";
-                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    subText3.innerText = `You guessed- ${userChoice}`;
-
-                default:
-                    return "";
-            }  
+            if(CPUChoice == 'rock' || CPUChoice == 'scissos'){
+                subText1.innerText = "You Win!";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            }else if(CPUChoice == 'paper' || CPUChoice == 'lizard'){
+                subText1.innerText = "You Lose.";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            }else{
+                subText1.innerText = "You Tie.";
+                subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                subText3.innerText = `You guessed- ${userChoice}`;
+            }   
 
         default:
             return "Error";     
