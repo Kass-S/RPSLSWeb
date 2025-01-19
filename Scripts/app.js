@@ -50,6 +50,58 @@ PlayerPlayBtn.addEventListener('click', function(){
     BestOf7Btn.className = "btn general-btn best-of-7";
 })
 
+SuddenDeathBtn.addEventListener('click', function (){
+    SuddenDeathBtn.className = "noDisplay";
+    BestOf3Btn.className = "noDisplay";
+    BestOf5Btn.className = "noDisplay";
+    BestOf7Btn.className = "noDisplay";
+
+    CPUrockBtn.className = 'general-btn btn choice-btns';
+    CPUpaperBtn.className = 'general-btn btn choice-btns';
+    CPUscissorBtn.className = 'general-btn btn choice-btns';
+    CPUlizardBtn.className = 'general-btn btn choice-btns';
+    CPUspockBtn.className = 'general-btn btn choice-btns';
+    
+    subText2.innerText = 'Choose your fighter!';
+})
+BestOf3Btn.addEventListener('click', function (){
+    SuddenDeathBtn.className = "noDisplay";
+    BestOf3Btn.className = "noDisplay";
+    BestOf5Btn.className = "noDisplay";
+    BestOf7Btn.className = "noDisplay";
+
+    CPUrockBtn.className = 'general-btn btn choice-btns';
+    CPUpaperBtn.className = 'general-btn btn choice-btns';
+    CPUscissorBtn.className = 'general-btn btn choice-btns';
+    CPUlizardBtn.className = 'general-btn btn choice-btns';
+    CPUspockBtn.className = 'general-btn btn choice-btns';
+})
+BestOf5Btn.addEventListener('click', function (){
+    SuddenDeathBtn.className = "noDisplay";
+    BestOf3Btn.className = "noDisplay";
+    BestOf5Btn.className = "noDisplay";
+    BestOf7Btn.className = "noDisplay";
+
+    CPUrockBtn.className = 'general-btn btn choice-btns';
+    CPUpaperBtn.className = 'general-btn btn choice-btns';
+    CPUscissorBtn.className = 'general-btn btn choice-btns';
+    CPUlizardBtn.className = 'general-btn btn choice-btns';
+    CPUspockBtn.className = 'general-btn btn choice-btns';
+})
+BestOf7Btn.addEventListener('click', function (){
+    SuddenDeathBtn.className = "noDisplay";
+    BestOf3Btn.className = "noDisplay";
+    BestOf5Btn.className = "noDisplay";
+    BestOf7Btn.className = "noDisplay";
+
+    CPUrockBtn.className = 'general-btn btn choice-btns';
+    CPUpaperBtn.className = 'general-btn btn choice-btns';
+    CPUscissorBtn.className = 'general-btn btn choice-btns';
+    CPUlizardBtn.className = 'general-btn btn choice-btns';
+    CPUspockBtn.className = 'general-btn btn choice-btns';
+})
+
+
 CPUrockBtn.addEventListener('click', async function(){
     
     let randomCPU = await CallCPURandom(); 
