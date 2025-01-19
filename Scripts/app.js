@@ -7,10 +7,11 @@ async function CallCPURandom(){
     return data;
 }
 
+let BackBtn = document.getElementById('BackBtn');
 
-let subText1 = document.getElementById('subText1');
-let subText2 = document.getElementById('subText2');
-let subText3 = document.getElementById('subText3');
+let SubText1 = document.getElementById('SubText1');
+let SubText2 = document.getElementById('SubText2');
+let SubText3 = document.getElementById('SubText3');
 
 let CPUPlayBtn = document.getElementById('CPUPlayBtn');
 let PlayerPlayBtn = document.getElementById('PlayerPlayBtn');
@@ -20,11 +21,14 @@ let BestOf3Btn = document.getElementById('BestOf3Btn');
 let BestOf5Btn = document.getElementById('BestOf5Btn');
 let BestOf7Btn = document.getElementById('BestOf7Btn');
 
-let CPUrockBtn = document.getElementById('CPUrockBtn');
-let CPUpaperBtn = document.getElementById('CPUpaperBtn');
-let CPUscissorBtn = document.getElementById('CPUscissorBtn');
-let CPUlizardBtn = document.getElementById('CPUlizardBtn');
-let CPUspockBtn = document.getElementById('CPUspockBtn');
+let RockBtn = document.getElementById('RockBtn');
+let PaperBtn = document.getElementById('PaperBtn');
+let ScissorBtn = document.getElementById('ScissorBtn');
+let LizardBtn = document.getElementById('LizardBtn');
+let SpockBtn = document.getElementById('SpockBtn');
+
+let PlayAgainBtn = document.getElementById('PlayAgainBtn');
+let QuitBtn = document.getElementById('QuitBtn');
 
 let CPUPlayBool = false;
 let PlayerPlayBool = false;
@@ -73,11 +77,11 @@ SuddenDeathBtn.addEventListener('click', function (){
     BestOf5Btn.className = "noDisplay";
     BestOf7Btn.className = "noDisplay";
 
-    CPUrockBtn.className = 'general-btn btn choice-btns';
-    CPUpaperBtn.className = 'general-btn btn choice-btns';
-    CPUscissorBtn.className = 'general-btn btn choice-btns';
-    CPUlizardBtn.className = 'general-btn btn choice-btns';
-    CPUspockBtn.className = 'general-btn btn choice-btns';
+    RockBtn.className = 'general-btn btn choice-btns';
+    PaperBtn.className = 'general-btn btn choice-btns';
+    ScissorBtn.className = 'general-btn btn choice-btns';
+    LizardBtn.className = 'general-btn btn choice-btns';
+    SpockBtn.className = 'general-btn btn choice-btns';
     
     if(CPUPlayBool == true){
         CPUSuddenDeathBool = true;
@@ -92,11 +96,11 @@ BestOf3Btn.addEventListener('click', function (){
     BestOf5Btn.className = "noDisplay";
     BestOf7Btn.className = "noDisplay";
 
-    CPUrockBtn.className = 'general-btn btn choice-btns';
-    CPUpaperBtn.className = 'general-btn btn choice-btns';
-    CPUscissorBtn.className = 'general-btn btn choice-btns';
-    CPUlizardBtn.className = 'general-btn btn choice-btns';
-    CPUspockBtn.className = 'general-btn btn choice-btns';
+    RockBtn.className = 'general-btn btn choice-btns';
+    PaperBtn.className = 'general-btn btn choice-btns';
+    ScissorBtn.className = 'general-btn btn choice-btns';
+    LizardBtn.className = 'general-btn btn choice-btns';
+    SpockBtn.className = 'general-btn btn choice-btns';
 
     if(CPUPlayBool == true){
         CPUBestOf3Bool = true;
@@ -111,11 +115,11 @@ BestOf5Btn.addEventListener('click', function (){
     BestOf5Btn.className = "noDisplay";
     BestOf7Btn.className = "noDisplay";
 
-    CPUrockBtn.className = 'general-btn btn choice-btns';
-    CPUpaperBtn.className = 'general-btn btn choice-btns';
-    CPUscissorBtn.className = 'general-btn btn choice-btns';
-    CPUlizardBtn.className = 'general-btn btn choice-btns';
-    CPUspockBtn.className = 'general-btn btn choice-btns';
+    RockBtn.className = 'general-btn btn choice-btns';
+    PaperBtn.className = 'general-btn btn choice-btns';
+    ScissorBtn.className = 'general-btn btn choice-btns';
+    LizardBtn.className = 'general-btn btn choice-btns';
+    SpockBtn.className = 'general-btn btn choice-btns';
 
     if(CPUPlayBool == true){
         CPUBestOf5Bool = true;
@@ -130,11 +134,11 @@ BestOf7Btn.addEventListener('click', function (){
     BestOf5Btn.className = "noDisplay";
     BestOf7Btn.className = "noDisplay";
 
-    CPUrockBtn.className = 'general-btn btn choice-btns';
-    CPUpaperBtn.className = 'general-btn btn choice-btns';
-    CPUscissorBtn.className = 'general-btn btn choice-btns';
-    CPUlizardBtn.className = 'general-btn btn choice-btns';
-    CPUspockBtn.className = 'general-btn btn choice-btns';
+    RockBtn.className = 'general-btn btn choice-btns';
+    PaperBtn.className = 'general-btn btn choice-btns';
+    ScissorBtn.className = 'general-btn btn choice-btns';
+    LizardBtn.className = 'general-btn btn choice-btns';
+    SpockBtn.className = 'general-btn btn choice-btns';
 
     if(CPUPlayBool == true){
         CPUBestOf7Bool = true;
@@ -144,31 +148,31 @@ BestOf7Btn.addEventListener('click', function (){
 })
 
 
-CPUrockBtn.addEventListener('click', async function(){
+RockBtn.addEventListener('click', async function(){
     
     userChoice = 'rock';
     CallCPURandom(); 
 
 })
-CPUpaperBtn.addEventListener('click', async function(){
+PaperBtn.addEventListener('click', async function(){
 
     userChoice = 'paper';
     CallCPURandom(); 
     
 })
-CPUscissorBtn.addEventListener('click', async function(){
+ScissorBtn.addEventListener('click', async function(){
 
     userChoice = 'scissors';
     CallCPURandom(); 
     
 })
-CPUlizardBtn.addEventListener('click', async function(){
+LizardBtn.addEventListener('click', async function(){
 
     userChoice = 'lizard';
     CallCPURandom(); 
     
 })
-CPUspockBtn.addEventListener('click', async function(){
+SpockBtn.addEventListener('click', async function(){
 
     userChoice = 'spock';
     CallCPURandom();  
@@ -182,79 +186,129 @@ async function gamePlay(){
         switch(userChoice.toLocaleLowerCase())
         {
         case "rock": 
-            if(CPUChoice == 'scissors' || CPUChoice == 'lizard'){
-                subText1.innerText = "You Win!";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
-            }else if(CPUChoice == 'paper' || CPUChoice == 'spock'){
-                subText1.innerText = "You Lose.";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
+            if(CPUChoice === 'scissors' || CPUChoice === 'lizard'){
+                SubText1.innerText = "You Win!";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
+            }else if(CPUChoice === 'paper' || CPUChoice === 'spock'){
+                SubText1.innerText = "You Lose.";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
             }else{
-                subText1.innerText = "You Tie.";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
-            }                 
+                SubText1.innerText = "You Tie.";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
+            }
+            BackBtn.className = 'noDisplay';
+
+            RockBtn.className = 'noDisplay';
+            PaperBtn.className = 'noDisplay';
+            ScissorBtn.className = 'noDisplay';
+            LizardBtn.className = 'noDisplay';
+            SpockBtn.className = 'noDisplay';
+            
+            PlayAgainBtn.className = 'play-again-btn btn general-btn';
+            QuitBtn.className = 'btn general-btn quit-btn';
 
         case "paper":
             if(CPUChoice == 'rock' || CPUChoice == 'spock'){
-                subText1.innerText = "You Win!";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
+                SubText1.innerText = "You Win!";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
             }else if(CPUChoice == 'scissors' || CPUChoice == 'lose'){
-                subText1.innerText = "You Lose.";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
+                SubText1.innerText = "You Lose.";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
             }else{
-                subText1.innerText = "You Tie.";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
-            }  
+                SubText1.innerText = "You Tie.";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
+            }
+            BackBtn.className = 'noDisplay';
+            
+            RockBtn.className = 'noDisplay';
+            PaperBtn.className = 'noDisplay';
+            ScissorBtn.className = 'noDisplay';
+            LizardBtn.className = 'noDisplay';
+            SpockBtn.className = 'noDisplay';
+            
+            PlayAgainBtn.className = 'play-again-btn btn general-btn';
+            QuitBtn.className = 'btn general-btn quit-btn';
             
         case "scissors":
             if(CPUChoice == 'paper' || CPUChoice == 'lizard'){
-                subText1.innerText = "You Win!";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
+                SubText1.innerText = "You Win!";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
             }else if(CPUChoice == 'rock' || CPUChoice == 'spock'){
-                subText1.innerText = "You Lose.";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
+                SubText1.innerText = "You Lose.";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
             }else{
-                subText1.innerText = "You Tie.";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
+                SubText1.innerText = "You Tie.";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
             }
+            BackBtn.className = 'noDisplay';
+            
+            RockBtn.className = 'noDisplay';
+            PaperBtn.className = 'noDisplay';
+            ScissorBtn.className = 'noDisplay';
+            LizardBtn.className = 'noDisplay';
+            SpockBtn.className = 'noDisplay';
+
+            PlayAgainBtn.className = 'play-again-btn btn general-btn';
+            QuitBtn.className = 'btn general-btn quit-btn';
 
         case "lizard":
             if(CPUChoice == 'paper' || CPUChoice == 'spock'){
-                subText1.innerText = "You Win!";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
+                SubText1.innerText = "You Win!";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
             }else if(CPUChoice == 'rock' || CPUChoice == 'scissors'){
-                subText1.innerText = "You Lose.";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
+                SubText1.innerText = "You Lose.";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
             }else{
-                subText1.innerText = "You Tie.";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
-            } 
+                SubText1.innerText = "You Tie.";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
+            }
+            BackBtn.className = 'noDisplay';
+            
+            RockBtn.className = 'noDisplay';
+            PaperBtn.className = 'noDisplay';
+            ScissorBtn.className = 'noDisplay';
+            LizardBtn.className = 'noDisplay';
+            SpockBtn.className = 'noDisplay';
+            
+            PlayAgainBtn.className = 'play-again-btn btn general-btn';
+            QuitBtn.className = 'btn general-btn quit-btn';
 
         case "spock":
             if(CPUChoice == 'rock' || CPUChoice == 'scissos'){
-                subText1.innerText = "You Win!";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
+                SubText1.innerText = "You Win!";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
             }else if(CPUChoice == 'paper' || CPUChoice == 'lizard'){
-                subText1.innerText = "You Lose.";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
+                SubText1.innerText = "You Lose.";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
             }else{
-                subText1.innerText = "You Tie.";
-                subText2.innerText = `CPU guessed- ${CPUChoice}`;
-                subText3.innerText = `You guessed- ${userChoice}`;
-            }   
+                SubText1.innerText = "You Tie.";
+                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                SubText3.innerText = `You guessed- ${userChoice}`;
+            }
+            BackBtn.className = 'noDisplay';
+            
+            RockBtn.className = 'noDisplay';
+            PaperBtn.className = 'noDisplay';
+            ScissorBtn.className = 'noDisplay';
+            LizardBtn.className = 'noDisplay';
+            SpockBtn.className = 'noDisplay';
+            
+            PlayAgainBtn.className = 'play-again-btn btn general-btn';
+            QuitBtn.className = 'btn general-btn quit-btn';
 
         default:
             return "Error";     
@@ -264,12 +318,12 @@ async function gamePlay(){
         
         if(PlayerWins == 2 || CPUWins == 2){
             if(PlayerWins == 2){
-                subText1 = 'You Win';
+                SubText1 = 'You Win';
             }else{
-                subText1 = 'You Lose';
+                SubText1 = 'You Lose';
             }
-            subText2 = `CPU won- ${CPUWins} games`
-            subText3 = `You won- ${PlayerWins} games`
+            SubText2 = `CPU won- ${CPUWins} games`
+            SubText3 = `You won- ${PlayerWins} games`
         }
     }
     
