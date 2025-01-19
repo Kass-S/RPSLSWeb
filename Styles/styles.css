@@ -11,6 +11,9 @@ body{
     font-family: "Irish Grover", Arial, Helvetica, sans-serif;
     /* color: white; */
 }
+.noDisplay{
+    display: none;
+}
 
 .general-btn{
     display: flex;

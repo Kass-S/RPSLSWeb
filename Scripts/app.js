@@ -1,8 +1,14 @@
+async function CallCPURandom(){
+    const promise = await fetch('https://kspacekrpsls-fkfehdbve8a0f9ag.westus-01.azurewebsites.net/RockPaperScissorsLizardSpock/PlayRPSLS');
+    const data = await promise.text();
+    console.log(data);
+    return data;
+}
 
 
-let CPUsubText1 = document.getElementById('CPUsubText1');
-let CPUsubText2 = document.getElementById('CPUsubText2');
-let CPUsubText3 = document.getElementById('CPUsubText3');
+let subText1 = document.getElementById('subText1');
+let subText2 = document.getElementById('subText2');
+let subText3 = document.getElementById('subText3');
 
 let CPUrockBtn = document.getElementById('CPUrockBtn');
 let CPUpaperBtn = document.getElementById('CPUpaperBtn');
@@ -15,59 +21,115 @@ let CPUBestOf3Bool = false;
 let CPUBestOf5Bool = false;
 let CPUBestOf7Bool = false;
 
-async function CallCPURandom(){
-    const promise = await fetch('https://kspacekrpsls-fkfehdbve8a0f9ag.westus-01.azurewebsites.net/RockPaperScissorsLizardSpock/PlayRPSLS');
-    const data = await promise.text();
-    console.log(data);
-    return data;
-}
-
 
 
 CPUrockBtn.addEventListener('click', async function(){
     
-    let testData = await CallCPURandom(); 
-    console.log(testData);
-    let userChoice = 'rock'
-    let stuff = await CPUSuddenDeath(userChoice, testData);
-    let stuffText = await stuff.toString();
-    console.log(stuffText);
+    let randomCPU = await CallCPURandom(); 
+    console.log(randomCPU);
+
+    if(CPUSuddenDeathBool == true){
+        let userChoice = 'rock';
+        CPUSuddenDeath(userChoice, randomCPU);
+    }
+
+    if(CPUBestOf3Bool == true){
+
+    }
+
+    if(CPUBestOf5Bool == true){
+
+    }
+    
+    if(CPUBestOf7Bool == true){
+
+    }
 })
 CPUpaperBtn.addEventListener('click', async function(){
 
-    // let testData = await CallCPURandom(); 
-    // console.log(testData);
-    // let userChoice = 'paper'
-    // let stuff = await CPUSuddenDeath(userChoice, testData);
-    // let stuffText = await stuff.toString();
-    // console.log(stuffText);
+    let randomCPU = await CallCPURandom(); 
+    console.log(randomCPU);
+
+    if(CPUSuddenDeathBool == true){
+        let userChoice = 'paper';
+        CPUSuddenDeath(userChoice, randomCPU);
+    }
+
+    if(CPUBestOf3Bool == true){
+
+    }
+
+    if(CPUBestOf5Bool == true){
+
+    }
+    
+    if(CPUBestOf7Bool == true){
+
+    }
 })
 CPUscissorBtn.addEventListener('click', async function(){
 
-    // let testData = await CallCPURandom(); 
-    // console.log(testData);
-    // let userChoice = 'scissors'
-    // let stuff = await CPUSuddenDeath(userChoice, testData);
-    // let stuffText = await stuff.toString();
-    // console.log(stuffText);
+    let randomCPU = await CallCPURandom(); 
+    console.log(randomCPU);
+
+    if(CPUSuddenDeathBool == true){
+        let userChoice = 'scissors';
+        CPUSuddenDeath(userChoice, randomCPU);
+    }
+
+    if(CPUBestOf3Bool == true){
+
+    }
+
+    if(CPUBestOf5Bool == true){
+
+    }
+    
+    if(CPUBestOf7Bool == true){
+
+    }
 })
 CPUlizardBtn.addEventListener('click', async function(){
 
-    // let testData = await CallCPURandom(); 
-    // console.log(testData);
-    // let userChoice = 'lizard'
-    // let stuff = await CPUSuddenDeath(userChoice, testData);
-    // let stuffText = await stuff.toString();
-    // console.log(stuffText);
+    let randomCPU = await CallCPURandom(); 
+    console.log(randomCPU);
+
+    if(CPUSuddenDeathBool == true){
+
+        
+        let userChoice = 'lizard';
+        CPUSuddenDeath(userChoice, randomCPU);
+
+    }else if(CPUBestOf3Bool == true){
+
+    }else if(CPUBestOf5Bool == true){
+
+    }else if(CPUBestOf7Bool == true){
+
+    }
 })
 CPUspockBtn.addEventListener('click', async function(){
 
-    // let testData = await CallCPURandom(); 
-    // console.log(testData);
-    // let userChoice = 'spock'
-    // let stuff = await CPUSuddenDeath(userChoice, testData);
-    // let stuffText = await stuff.toString();
-    // console.log(stuffText);
+    let randomCPU = await CallCPURandom(); 
+    console.log(randomCPU);
+
+    if(CPUSuddenDeathBool == true){
+        let userChoice = 'spock';
+        CPUSuddenDeath(userChoice, randomCPU);
+    }
+
+    if(CPUBestOf3Bool == true){
+
+    }
+
+    if(CPUBestOf5Bool == true){
+
+    }
+
+    if(CPUBestOf7Bool == true){
+
+    }
+    
 })
 
 
@@ -80,34 +142,29 @@ async function CPUSuddenDeath(userChoice, randomCPU){
             switch(CPUChoice)
             {
                 case "rock":
-                    CPUsubText1.innerText = "You Tie.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Tie.`;    
+                    subText1.innerText = "You Tie.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;   
 
                 case "paper":
-                    CPUsubText1.innerText = "You Lose.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Lose.`;
+                    subText1.innerText = "You Lose.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "scissors": 
-                    CPUsubText1.innerText = "You Win!";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Win!`;
+                    subText1.innerText = "You Win!";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "lizard":
-                    CPUsubText1.innerText = "You Win!";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Win!`;
+                    subText1.innerText = "You Win!";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "spock":
-                    CPUsubText1.innerText = "You Lose.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Lose.`;
+                    subText1.innerText = "You Lose.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 default:
                     return "";
@@ -117,34 +174,29 @@ async function CPUSuddenDeath(userChoice, randomCPU){
             switch(CPUChoice)
             {
                 case "rock":
-                    CPUsubText1.innerText = "You Win!";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Win!`;
+                    subText1.innerText = "You Win!";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
                        
                 case "paper":
-                    CPUsubText1.innerText = "You Tie.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Tie.`;
+                    subText1.innerText = "You Tie.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "scissors":
-                    CPUsubText1.innerText = "You Lose.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`; 
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Lose.`;
+                    subText1.innerText = "You Lose.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "lizard":
-                    CPUsubText1.innerText = "You Lose.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Lose.`;
+                    subText1.innerText = "You Lose.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "spock":
-                    CPUsubText1.innerText = "You Win!";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Win!`;
+                    subText1.innerText = "You Win!";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
                 default:
                     return "";
             }
@@ -153,34 +205,29 @@ async function CPUSuddenDeath(userChoice, randomCPU){
             switch(CPUChoice)
             {
                 case "rock":
-                    CPUsubText1.innerText = "You Lose.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Lose.`;
+                    subText1.innerText = "You Lose.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
                         
                 case "paper":
-                    CPUsubText1.innerText = "You Win!";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Win!`;
+                    subText1.innerText = "You Win!";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "scissors": 
-                    CPUsubText1.innerText = "You Tie.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Tie.`;
+                    subText1.innerText = "You Tie.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "lizard":
-                    CPUsubText1.innerText = "You Win!";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Win!`;
+                    subText1.innerText = "You Win!";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "spock":
-                    CPUsubText1.innerText = "You Lose.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Lose.`;
+                    subText1.innerText = "You Lose.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 default:
                     return "";
@@ -190,34 +237,29 @@ async function CPUSuddenDeath(userChoice, randomCPU){
             switch(CPUChoice)
             {
                 case "rock":
-                    CPUsubText1.innerText = "You Lose.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Lose.`;
+                    subText1.innerText = "You Lose.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
                         
                 case "paper":
-                    CPUsubText1.innerText = "You Win!";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Win!`;
+                    subText1.innerText = "You Win!";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "scissors":
-                    CPUsubText1.innerText = "You Lose.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`; 
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Lose.`;
+                    subText1.innerText = "You Lose.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "lizard":
-                    CPUsubText1.innerText = "You Tie.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Tie.`;
+                    subText1.innerText = "You Tie.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "spock":
-                    CPUsubText1.innerText = "You Win!";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Win!`;
+                    subText1.innerText = "You Win!";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 default:
                     return "";
@@ -227,41 +269,36 @@ async function CPUSuddenDeath(userChoice, randomCPU){
             switch(CPUChoice)
             {
                 case "rock":
-                    CPUsubText1.innerText = "You Win!";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Win.`;
+                    subText1.innerText = "You Win!";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
                         
                 case "paper":
-                    CPUsubText1.innerText = "You Lose.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Lose.`;
+                    subText1.innerText = "You Lose.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "scissors":
-                    CPUsubText1.innerText = "You Win!";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`; 
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Win!`
+                    subText1.innerText = "You Win!";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "lizard":
-                    CPUsubText1.innerText = "You Lose.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Lose`;
+                    subText1.innerText = "You Lose.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 case "spock":
-                    CPUsubText1.innerText = "You Tie.";
-                    CPUsubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                    CPUsubText3.innerText = `You guessed- ${userChoice}`;
-                    return `CPU guessed - ${CPUChoice}\nYou guessed - ${userChoice}\nYou Tie.`;
+                    subText1.innerText = "You Tie.";
+                    subText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    subText3.innerText = `You guessed- ${userChoice}`;
 
                 default:
                     return "";
             }  
 
         default:
-            return "Please enter Rock, Paper, Scissors, Lizard, or Spock.\nPlease check your spelling.";     
+            return "Error";     
 
     }
 
