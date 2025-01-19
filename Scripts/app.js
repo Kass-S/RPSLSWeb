@@ -10,6 +10,14 @@ let subText1 = document.getElementById('subText1');
 let subText2 = document.getElementById('subText2');
 let subText3 = document.getElementById('subText3');
 
+let CPUPlayBtn = document.getElementById('CPUPlayBtn');
+let PlayerPlayBtn = document.getElementById('PlayerPlayBtn');
+
+let SuddenDeathBtn = document.getElementById('SuddenDeathBtn');
+let BestOf3Btn = document.getElementById('BestOf3Btn');
+let BestOf5Btn = document.getElementById('BestOf5Btn');
+let BestOf7Btn = document.getElementById('BestOf7Btn');
+
 let CPUrockBtn = document.getElementById('CPUrockBtn');
 let CPUpaperBtn = document.getElementById('CPUpaperBtn');
 let CPUscissorBtn = document.getElementById('CPUscissorBtn');
@@ -22,6 +30,25 @@ let CPUBestOf5Bool = false;
 let CPUBestOf7Bool = false;
 
 
+
+CPUPlayBtn.addEventListener('click', function(){
+    CPUPlayBtn.className = 'noDisplay';
+    PlayerPlayBtn.className = "noDisplay";
+
+    SuddenDeathBtn.className = "general-btn btn sudden-death-btn";
+    BestOf3Btn.className = "btn general-btn best-of-3";
+    BestOf5Btn.className = "btn general-btn best-of-5";
+    BestOf7Btn.className = "btn general-btn best-of-7";
+})
+PlayerPlayBtn.addEventListener('click', function(){
+    CPUPlayBtn.className = 'noDisplay';
+    PlayerPlayBtn.className = "noDisplay";
+
+    SuddenDeathBtn.className = "general-btn btn sudden-death-btn";
+    BestOf3Btn.className = "btn general-btn best-of-3";
+    BestOf5Btn.className = "btn general-btn best-of-5";
+    BestOf7Btn.className = "btn general-btn best-of-7";
+})
 
 CPUrockBtn.addEventListener('click', async function(){
     
@@ -96,7 +123,7 @@ CPUlizardBtn.addEventListener('click', async function(){
 
     if(CPUSuddenDeathBool == true){
 
-        
+
         let userChoice = 'lizard';
         CPUSuddenDeath(userChoice, randomCPU);
 
