@@ -38,10 +38,7 @@ let CPUBestOf3Bool = false;
 let CPUBestOf5Bool = false;
 let CPUBestOf7Bool = false;
 
-let PvPSuddenDeathBool = false;
-let PVPBestOf3Bool = false;
-let PVPBestOf5Bool = false;
-let PVPBestOf7Bool = false;
+let P1Turn = true;
 
 let CPUChoice = '';
 let userChoice = '';
@@ -63,10 +60,11 @@ PlayerPlayBtn.addEventListener('click', function(){
     CPUPlayBtn.className = 'noDisplay';
     PlayerPlayBtn.className = "noDisplay";
 
-    SuddenDeathBtn.className = "general-btn btn sudden-death-btn";
-    BestOf3Btn.className = "btn general-btn best-of-3";
-    BestOf5Btn.className = "btn general-btn best-of-5";
-    BestOf7Btn.className = "btn general-btn best-of-7";
+    RockBtn.className = 'general-btn btn choice-btns';
+    PaperBtn.className = 'general-btn btn choice-btns';
+    ScissorBtn.className = 'general-btn btn choice-btns';
+    LizardBtn.className = 'general-btn btn choice-btns';
+    SpockBtn.className = 'general-btn btn choice-btns';
 
     PlayerPlayBool = true;
 })
@@ -1655,124 +1653,530 @@ async function gamePlay(){
             default:
                 return "Error"; 
         }
-    }
-    
+    }else if(PlayerPlayBool == true){
 
+        switch(P1Choice.toLocaleLowerCase())
+        {
+            case "rock":
 
-    // p1Turn = true;
-    // switch(P1Choice.toLocaleLowerCase())
-    // {
-    //     case "rock": 
-    //         switch(P2Choice.toLocaleLowerCase())
-    //         {
-    //             case "rock":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;    
-
-    //             case "paper":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
-    //             case "scissors": 
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
-
-    //             case "lizard":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
-
-    //             case "spock":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
-
-    //             default:
-    //                 return "";
-    //         }                      
-
-    //     case "paper":
-    //         switch(P2Choice.toLocaleLowerCase())
-    //         {
-    //             case "rock":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
+                switch(P2Choice.toLocaleLowerCase())
+                {
+                    case "rock":
                        
-    //             case "paper":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;
-
-    //             case "scissors": 
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
-
-    //             case "lizard":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
-
-    //             case "spock":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
-    //             default:
-    //                 return "";
-    //         }
-
-    //     case "scissors": 
-    //         switch(P2Choice.toLocaleLowerCase())
-    //         {
-    //             case "rock":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
+                        SubText1.innerText = "You Tie.";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+                    
+                        BackBtn.className = 'noDisplay';
+        
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
                         
-    //             case "paper":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+        
+                        PlayerPlayBool = false;
+                        break;
+                            
+                    case "paper":
+                        SubText1.innerText = "P2 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
 
-    //             case "scissors": 
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;
-
-    //             case "lizard":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
-
-    //             case "spock":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
-
-    //             default:
-    //                 return "";
-    //         }
-
-    //     case "lizard":
-    //         switch(P2Choice.toLocaleLowerCase())
-    //         {
-    //             case "rock":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins!`;
+                        BackBtn.className = 'noDisplay';
+        
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
                         
-    //             case "paper":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+        
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "scissors": 
+                        SubText1.innerText = "P1 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `You guessed- ${P2Choice}`;
 
-    //             case "scissors": 
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
-
-    //             case "lizard":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;
-
-    //             case "spock":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins!`;
-
-    //             default:
-    //                 return "";
-    //         }
-
-    //     case "spock":
-    //         switch(P2Choice.toLocaleLowerCase())
-    //         {
-    //             case "rock":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins`;
+                        BackBtn.className = 'noDisplay';
+        
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
                         
-    //             case "paper":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+        
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "lizard":
+                        SubText1.innerText = "P1 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `You guessed- ${P2Choice}`;
 
-    //             case "scissors": 
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 1 Wins`
+                        BackBtn.className = 'noDisplay';
+        
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+        
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "spock":
+                        SubText1.innerText = "P2 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
 
-    //             case "lizard":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nPlayer 2 Wins`;
+                        BackBtn.className = 'noDisplay';
+        
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+        
+                        PlayerPlayBool = false;
+                        break;
+    
+                    default:
+                        return "";
+                } 
+                break;
 
-    //             case "spock":
-    //                 return `Player 1 guessed - ${P1Choice}\nPlayer 2 guessed - ${P2Choice}\nYou Tie.`;
+            case "paper":
+                switch(P2Choice.toLocaleLowerCase())
+                {
+                    case "rock":
+                        SubText1.innerText = "P1 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
 
-    //             default:
-    //                 return "";
-    //         }  
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
 
-    //     default:
-    //         return "Please enter Rock, Paper, Scissors, Lizard, or Spock.\nPlease check your spelling.";     
+                        PlayerPlayBool = false;
+                        break;
+                           
+                    case "paper":
+                        SubText1.innerText = "You Tie.";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
 
-    // }
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
 
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "scissors": 
+                        SubText1.innerText = "P2 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "lizard":
+                        SubText1.innerText = "P2 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "spock":
+                        SubText1.innerText = "P1 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+                    default:
+                        return "";
+                }               
+                break;
+                
+            case "scissors":
+                switch(P2Choice.toLocaleLowerCase())
+                {
+                    case "rock":
+                        SubText1.innerText = "P2 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+                        
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+                            
+                    case "paper":
+                        SubText1.innerText = "P1 Wins!";
+                        SubText2.innerText = `CPU guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "scissors": 
+                        SubText1.innerText = "You Tie.";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "lizard":
+                        SubText1.innerText = "P1 Wins!";
+                        SubText2.innerText = `CPU guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "spock":
+                        SubText1.innerText = "P2 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    default:
+                        return "";
+                }
+                break;
+
+            case "lizard":
+                switch(P2Choice.toLocaleLowerCase())
+                {
+                    case "rock":
+                        SubText1.innerText = "P2 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+                            
+                    case "paper":
+                        SubText1.innerText = "P1 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "scissors": 
+                        SubText1.innerText = "P2 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "lizard":
+                        SubText1.innerText = "You Tie.";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "spock":
+                        SubText1.innerText = "P1 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    default:
+                        return "";
+                }
+                break;
+
+            case "spock":
+                switch(P2Choice.toLocaleLowerCase())
+                {
+                    case "rock":
+                        SubText1.innerText = "P1 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+                            
+                    case "paper":
+                        SubText1.innerText = "P2 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "scissors": 
+                        SubText1.innerText = "P1 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "lizard":
+                        SubText1.innerText = "P2 Wins!";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    case "spock":
+                        SubText1.innerText = "You Tie.";
+                        SubText2.innerText = `P1 guessed- ${P1Choice}`;
+                        SubText3.innerText = `P2 guessed- ${P2Choice}`;
+
+                        BackBtn.className = 'noDisplay';
+                
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerPlayBool = false;
+                        break;
+    
+                    default:
+                        return "";
+                }  
+                break;
+
+            default:
+                return "Error";     
+
+        }
+
+    }
 }
