@@ -42,6 +42,8 @@ let P1Turn = true;
 
 let CPUChoice = '';
 let userChoice = '';
+let P1Choice = '';
+let P2Choice = '';
 let CPUWins = 0;
 let PlayerWins = 0;
 
@@ -66,7 +68,14 @@ PlayerPlayBtn.addEventListener('click', function(){
     LizardBtn.className = 'general-btn btn choice-btns';
     SpockBtn.className = 'general-btn btn choice-btns';
 
+    SubText1.innerText = 'P1';
+    SubText2.innerText = 'Choose your fighter!';
+
     PlayerPlayBool = true;
+    P1Turn = true;
+
+    P1Choice = '';
+    P2Choice = '';
 })
 
 SuddenDeathBtn.addEventListener('click', function (){
@@ -158,41 +167,121 @@ BestOf7Btn.addEventListener('click', function (){
 
 
 RockBtn.addEventListener('click', async function(){
-    
-    userChoice = 'rock';
-    CallCPURandom(); 
+    if(PlayerPlayBool == false){
+        userChoice = 'rock';
+        CallCPURandom(); 
+    }
 
+    if(PlayerPlayBool == true && P1Turn == true){
+        SubText1.innerText = 'P2';
+
+        RockBtn.className = 'general-btn btn choice-btns';
+        PaperBtn.className = 'general-btn btn choice-btns';
+        ScissorBtn.className = 'general-btn btn choice-btns';
+        LizardBtn.className = 'general-btn btn choice-btns';
+        SpockBtn.className = 'general-btn btn choice-btns';
+        
+        P1Choice = 'rock';
+        P1Turn = false;        
+    }else if(PlayerPlayBool == true && P1Turn == false){
+        P2Choice = 'rock';
+        PVPGamePlay();
+    }
 })
 PaperBtn.addEventListener('click', async function(){
-
-    userChoice = 'paper';
-    CallCPURandom(); 
+    if(PlayerPlayBool == false){
+        userChoice = 'paper';
+        CallCPURandom(); 
+    }
     
+    if(PlayerPlayBool == true && P1Turn == true){
+        SubText1.innerText = 'P2';
+
+        RockBtn.className = 'general-btn btn choice-btns';
+        PaperBtn.className = 'general-btn btn choice-btns';
+        ScissorBtn.className = 'general-btn btn choice-btns';
+        LizardBtn.className = 'general-btn btn choice-btns';
+        SpockBtn.className = 'general-btn btn choice-btns';
+
+        P1Choice = 'paper';
+        P1Turn = false;
+    }else if(PlayerPlayBool == true && P1Turn == false){
+        P2Choice = 'paper';
+        PVPGamePlay();
+    }
 })
 ScissorBtn.addEventListener('click', async function(){
-
-    userChoice = 'scissors';
-    CallCPURandom(); 
+    if(PlayerPlayBool == false){
+        userChoice = 'scissors';
+        CallCPURandom();   
+    }
     
+    if(PlayerPlayBool == true && P1Turn == true){
+        SubText1.innerText = 'P2';
+
+        RockBtn.className = 'general-btn btn choice-btns';
+        PaperBtn.className = 'general-btn btn choice-btns';
+        ScissorBtn.className = 'general-btn btn choice-btns';
+        LizardBtn.className = 'general-btn btn choice-btns';
+        SpockBtn.className = 'general-btn btn choice-btns';
+
+        P1Choice = 'scissors';
+        P1Turn = false;
+    }else if(PlayerPlayBool == true && P1Turn == false){
+        P2Choice = 'scissors';
+        PVPGamePlay();
+    }
 })
 LizardBtn.addEventListener('click', async function(){
+    if(PlayerPlayBool == false){
+        userChoice = 'lizard';
+        CallCPURandom();
+    }
 
-    userChoice = 'lizard';
-    CallCPURandom(); 
-    
+    if(PlayerPlayBool == true && P1Turn == true){
+        SubText1.innerText = 'P2';
+
+        RockBtn.className = 'general-btn btn choice-btns';
+        PaperBtn.className = 'general-btn btn choice-btns';
+        ScissorBtn.className = 'general-btn btn choice-btns';
+        LizardBtn.className = 'general-btn btn choice-btns';
+        SpockBtn.className = 'general-btn btn choice-btns';
+        
+        P1Choice = 'lizard';
+        P1Turn = false;
+    }else if(PlayerPlayBool == true && P1Turn == false){
+        P2Choice = 'lizard';
+        PVPGamePlay();
+    }    
 })
 SpockBtn.addEventListener('click', async function(){
+    if(PlayerPlayBool == false){
+        userChoice = 'spock';
+        CallCPURandom();
+    }
+    
+    if(PlayerPlayBool == true && P1Turn == true){
+        SubText1.innerText = 'P2';
 
-    userChoice = 'spock';
-    CallCPURandom();  
+        RockBtn.className = 'general-btn btn choice-btns';
+        PaperBtn.className = 'general-btn btn choice-btns';
+        ScissorBtn.className = 'general-btn btn choice-btns';
+        LizardBtn.className = 'general-btn btn choice-btns';
+        SpockBtn.className = 'general-btn btn choice-btns';
 
+        P1Choice = 'spock';
+        P1Turn = false;
+    }else if(PlayerPlayBool == true && P1Turn == false){
+        P2Choice = 'spock';
+        PVPGamePlay();
+    }
 })
 
 
 async function gamePlay(){
     
     if(CPUSuddenDeathBool == true){
-        switch(userChoice.toLocaleLowerCase())
+        switch(userChoice)
         {
             case "rock": 
                 if(CPUChoice === 'scissors' || CPUChoice === 'lizard'){
@@ -344,7 +433,7 @@ async function gamePlay(){
 
         }
     }else if(CPUBestOf3Bool == true){
-        switch(userChoice.toLocaleLowerCase())
+        switch(userChoice)
         {
             case "rock": 
                 if(CPUChoice === 'scissors' || CPUChoice === 'lizard'){
@@ -782,7 +871,7 @@ async function gamePlay(){
         }
         
     }else if(CPUBestOf5Bool == true){
-        switch(userChoice.toLocaleLowerCase())
+        switch(userChoice)
         {
             case "rock": 
                 if(CPUChoice === 'scissors' || CPUChoice === 'lizard'){
@@ -1218,7 +1307,7 @@ async function gamePlay(){
                 return "Error"; 
         }
     }else if(CPUBestOf7Bool == true){
-        switch(userChoice.toLocaleLowerCase())
+        switch(userChoice)
         {
             case "rock": 
                 if(CPUChoice === 'scissors' || CPUChoice === 'lizard'){
@@ -1653,13 +1742,17 @@ async function gamePlay(){
             default:
                 return "Error"; 
         }
-    }else if(PlayerPlayBool == true){
+    }
+}
 
-        switch(P1Choice.toLocaleLowerCase())
+async function PVPGamePlay(){
+    if(PlayerPlayBool == true){
+
+        switch(P1Choice)
         {
             case "rock":
 
-                switch(P2Choice.toLocaleLowerCase())
+                switch(P2Choice)
                 {
                     case "rock":
                        
@@ -1763,7 +1856,7 @@ async function gamePlay(){
                 break;
 
             case "paper":
-                switch(P2Choice.toLocaleLowerCase())
+                switch(P2Choice)
                 {
                     case "rock":
                         SubText1.innerText = "P1 Wins!";
@@ -1865,7 +1958,7 @@ async function gamePlay(){
                 break;
                 
             case "scissors":
-                switch(P2Choice.toLocaleLowerCase())
+                switch(P2Choice)
                 {
                     case "rock":
                         SubText1.innerText = "P2 Wins!";
@@ -1968,7 +2061,7 @@ async function gamePlay(){
                 break;
 
             case "lizard":
-                switch(P2Choice.toLocaleLowerCase())
+                switch(P2Choice)
                 {
                     case "rock":
                         SubText1.innerText = "P2 Wins!";
@@ -2071,7 +2164,7 @@ async function gamePlay(){
                 break;
 
             case "spock":
-                switch(P2Choice.toLocaleLowerCase())
+                switch(P2Choice)
                 {
                     case "rock":
                         SubText1.innerText = "P1 Wins!";
