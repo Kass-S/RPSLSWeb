@@ -82,6 +82,8 @@ SuddenDeathBtn.addEventListener('click', function (){
     ScissorBtn.className = 'general-btn btn choice-btns';
     LizardBtn.className = 'general-btn btn choice-btns';
     SpockBtn.className = 'general-btn btn choice-btns';
+
+    SubText2.innerText = 'Choose your fighter!';
     
     if(CPUPlayBool == true){
         CPUSuddenDeathBool = true;
@@ -102,11 +104,16 @@ BestOf3Btn.addEventListener('click', function (){
     LizardBtn.className = 'general-btn btn choice-btns';
     SpockBtn.className = 'general-btn btn choice-btns';
 
+    SubText2.innerText = 'Choose your fighter!';
+
     if(CPUPlayBool == true){
         CPUBestOf3Bool = true;
     }else if(PlayerPlayBool == true){
         PVPBestOf3Bool = true;
     }
+
+    CPUWins = 0;
+    PlayerWins = 0;
 
 })
 BestOf5Btn.addEventListener('click', function (){
@@ -120,6 +127,8 @@ BestOf5Btn.addEventListener('click', function (){
     ScissorBtn.className = 'general-btn btn choice-btns';
     LizardBtn.className = 'general-btn btn choice-btns';
     SpockBtn.className = 'general-btn btn choice-btns';
+
+    SubText2.innerText = 'Choose your fighter!';
 
     if(CPUPlayBool == true){
         CPUBestOf5Bool = true;
@@ -139,6 +148,8 @@ BestOf7Btn.addEventListener('click', function (){
     ScissorBtn.className = 'general-btn btn choice-btns';
     LizardBtn.className = 'general-btn btn choice-btns';
     SpockBtn.className = 'general-btn btn choice-btns';
+
+    SubText2.innerText = 'Choose your fighter!';
 
     if(CPUPlayBool == true){
         CPUBestOf7Bool = true;
@@ -185,146 +196,597 @@ async function gamePlay(){
     if(CPUSuddenDeathBool == true){
         switch(userChoice.toLocaleLowerCase())
         {
-        case "rock": 
-            if(CPUChoice === 'scissors' || CPUChoice === 'lizard'){
-                SubText1.innerText = "You Win!";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }else if(CPUChoice === 'paper' || CPUChoice === 'spock'){
-                SubText1.innerText = "You Lose.";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }else{
-                SubText1.innerText = "You Tie.";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }
-            BackBtn.className = 'noDisplay';
+            case "rock": 
+                if(CPUChoice === 'scissors' || CPUChoice === 'lizard'){
+                    SubText1.innerText = "You Win!";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }else if(CPUChoice === 'paper' || CPUChoice === 'spock'){
+                    SubText1.innerText = "You Lose.";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }else{
+                    SubText1.innerText = "You Tie.";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }
+                BackBtn.className = 'noDisplay';
 
-            RockBtn.className = 'noDisplay';
-            PaperBtn.className = 'noDisplay';
-            ScissorBtn.className = 'noDisplay';
-            LizardBtn.className = 'noDisplay';
-            SpockBtn.className = 'noDisplay';
-            
-            PlayAgainBtn.className = 'play-again-btn btn general-btn';
-            QuitBtn.className = 'btn general-btn quit-btn';
+                RockBtn.className = 'noDisplay';
+                PaperBtn.className = 'noDisplay';
+                ScissorBtn.className = 'noDisplay';
+                LizardBtn.className = 'noDisplay';
+                SpockBtn.className = 'noDisplay';
+                
+                PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                QuitBtn.className = 'btn general-btn quit-btn';
 
-        case "paper":
-            if(CPUChoice == 'rock' || CPUChoice == 'spock'){
-                SubText1.innerText = "You Win!";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }else if(CPUChoice == 'scissors' || CPUChoice == 'lose'){
-                SubText1.innerText = "You Lose.";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }else{
-                SubText1.innerText = "You Tie.";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }
-            BackBtn.className = 'noDisplay';
-            
-            RockBtn.className = 'noDisplay';
-            PaperBtn.className = 'noDisplay';
-            ScissorBtn.className = 'noDisplay';
-            LizardBtn.className = 'noDisplay';
-            SpockBtn.className = 'noDisplay';
-            
-            PlayAgainBtn.className = 'play-again-btn btn general-btn';
-            QuitBtn.className = 'btn general-btn quit-btn';
-            
-        case "scissors":
-            if(CPUChoice == 'paper' || CPUChoice == 'lizard'){
-                SubText1.innerText = "You Win!";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }else if(CPUChoice == 'rock' || CPUChoice == 'spock'){
-                SubText1.innerText = "You Lose.";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }else{
-                SubText1.innerText = "You Tie.";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }
-            BackBtn.className = 'noDisplay';
-            
-            RockBtn.className = 'noDisplay';
-            PaperBtn.className = 'noDisplay';
-            ScissorBtn.className = 'noDisplay';
-            LizardBtn.className = 'noDisplay';
-            SpockBtn.className = 'noDisplay';
+                CPUPlayBool = false;
+                CPUSuddenDeathBool = false;
+                break;
 
-            PlayAgainBtn.className = 'play-again-btn btn general-btn';
-            QuitBtn.className = 'btn general-btn quit-btn';
+            case "paper":
+                if(CPUChoice == 'rock' || CPUChoice == 'spock'){
+                    SubText1.innerText = "You Win!";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }else if(CPUChoice == 'scissors' || CPUChoice == 'lose'){
+                    SubText1.innerText = "You Lose.";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }else{
+                    SubText1.innerText = "You Tie.";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }
+                BackBtn.className = 'noDisplay';
+                
+                RockBtn.className = 'noDisplay';
+                PaperBtn.className = 'noDisplay';
+                ScissorBtn.className = 'noDisplay';
+                LizardBtn.className = 'noDisplay';
+                SpockBtn.className = 'noDisplay';
+                
+                PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                QuitBtn.className = 'btn general-btn quit-btn';
 
-        case "lizard":
-            if(CPUChoice == 'paper' || CPUChoice == 'spock'){
-                SubText1.innerText = "You Win!";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }else if(CPUChoice == 'rock' || CPUChoice == 'scissors'){
-                SubText1.innerText = "You Lose.";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }else{
-                SubText1.innerText = "You Tie.";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }
-            BackBtn.className = 'noDisplay';
-            
-            RockBtn.className = 'noDisplay';
-            PaperBtn.className = 'noDisplay';
-            ScissorBtn.className = 'noDisplay';
-            LizardBtn.className = 'noDisplay';
-            SpockBtn.className = 'noDisplay';
-            
-            PlayAgainBtn.className = 'play-again-btn btn general-btn';
-            QuitBtn.className = 'btn general-btn quit-btn';
+                CPUPlayBool = false;
+                CPUSuddenDeathBool = false;
+                break;
+                
+            case "scissors":
+                if(CPUChoice == 'paper' || CPUChoice == 'lizard'){
+                    SubText1.innerText = "You Win!";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }else if(CPUChoice == 'rock' || CPUChoice == 'spock'){
+                    SubText1.innerText = "You Lose.";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }else{
+                    SubText1.innerText = "You Tie.";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }
+                BackBtn.className = 'noDisplay';
+                
+                RockBtn.className = 'noDisplay';
+                PaperBtn.className = 'noDisplay';
+                ScissorBtn.className = 'noDisplay';
+                LizardBtn.className = 'noDisplay';
+                SpockBtn.className = 'noDisplay';
 
-        case "spock":
-            if(CPUChoice == 'rock' || CPUChoice == 'scissos'){
-                SubText1.innerText = "You Win!";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }else if(CPUChoice == 'paper' || CPUChoice == 'lizard'){
-                SubText1.innerText = "You Lose.";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }else{
-                SubText1.innerText = "You Tie.";
-                SubText2.innerText = `CPU guessed- ${CPUChoice}`;
-                SubText3.innerText = `You guessed- ${userChoice}`;
-            }
-            BackBtn.className = 'noDisplay';
-            
-            RockBtn.className = 'noDisplay';
-            PaperBtn.className = 'noDisplay';
-            ScissorBtn.className = 'noDisplay';
-            LizardBtn.className = 'noDisplay';
-            SpockBtn.className = 'noDisplay';
-            
-            PlayAgainBtn.className = 'play-again-btn btn general-btn';
-            QuitBtn.className = 'btn general-btn quit-btn';
+                PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                QuitBtn.className = 'btn general-btn quit-btn';
 
-        default:
-            return "Error";     
+                CPUPlayBool = false;
+                CPUSuddenDeathBool = false;
+                break;
+
+            case "lizard":
+                if(CPUChoice == 'paper' || CPUChoice == 'spock'){
+                    SubText1.innerText = "You Win!";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }else if(CPUChoice == 'rock' || CPUChoice == 'scissors'){
+                    SubText1.innerText = "You Lose.";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }else{
+                    SubText1.innerText = "You Tie.";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }
+                BackBtn.className = 'noDisplay';
+                
+                RockBtn.className = 'noDisplay';
+                PaperBtn.className = 'noDisplay';
+                ScissorBtn.className = 'noDisplay';
+                LizardBtn.className = 'noDisplay';
+                SpockBtn.className = 'noDisplay';
+                
+                PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                QuitBtn.className = 'btn general-btn quit-btn';
+
+                CPUPlayBool = false;
+                CPUSuddenDeathBool = false;
+                break;
+
+            case "spock":
+                if(CPUChoice == 'rock' || CPUChoice == 'scissos'){
+                    SubText1.innerText = "You Win!";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }else if(CPUChoice == 'paper' || CPUChoice == 'lizard'){
+                    SubText1.innerText = "You Lose.";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }else{
+                    SubText1.innerText = "You Tie.";
+                    SubText2.innerText = `CPU guessed- ${CPUChoice}`;
+                    SubText3.innerText = `You guessed- ${userChoice}`;
+                }
+                BackBtn.className = 'noDisplay';
+                
+                RockBtn.className = 'noDisplay';
+                PaperBtn.className = 'noDisplay';
+                ScissorBtn.className = 'noDisplay';
+                LizardBtn.className = 'noDisplay';
+                SpockBtn.className = 'noDisplay';
+                
+                PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                QuitBtn.className = 'btn general-btn quit-btn';
+
+                CPUPlayBool = false;
+                CPUSuddenDeathBool = false;
+                break;
+
+            default:
+                return "Error";     
 
         }
     }else if(CPUBestOf3Bool == true){
-        
-        if(PlayerWins == 2 || CPUWins == 2){
-            if(PlayerWins == 2){
-                SubText1 = 'You Win';
-            }else{
-                SubText1 = 'You Lose';
-            }
-            SubText2 = `CPU won- ${CPUWins} games`
-            SubText3 = `You won- ${PlayerWins} games`
+        switch(userChoice.toLocaleLowerCase())
+        {
+            case "rock": 
+                if(CPUChoice === 'scissors' || CPUChoice === 'lizard'){
+                    PlayerWins++;
+
+                    if(PlayerWins >= 2 || CPUWins >= 2){
+                        if(PlayerWins == 2){
+                            SubText1.innerText = 'You Win';
+                        }else{
+                            SubText1.innerText = 'You Lose';
+                        }
+                        SubText2.innerText = `CPU won- ${CPUWins} games`
+                        SubText3.innerText = `You won- ${PlayerWins} games`
+
+                        BackBtn.className = 'noDisplay';
+
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerWins = 0;
+                        CPUWins = 0;
+
+                        CPUPlayBool = false;
+                        CPUBestOf3Bool = false;
+                    }else{
+                        RockBtn.className = 'general-btn btn choice-btns';
+                        PaperBtn.className = 'general-btn btn choice-btns';
+                        ScissorBtn.className = 'general-btn btn choice-btns';
+                        LizardBtn.className = 'general-btn btn choice-btns';
+                        SpockBtn.className = 'general-btn btn choice-btns';
+
+                        SubText2.innerText = 'You Win! Choose your fighter!';
+                    }
+                }else if(CPUChoice === 'paper' || CPUChoice === 'spock'){
+                    CPUWins++;
+
+                    if(PlayerWins >= 2 || CPUWins >= 2){
+                        if(PlayerWins == 2){
+                            SubText1.innerText = 'You Win';
+                        }else{
+                            SubText1.innerText = 'You Lose';
+                        }
+                        SubText2.innerText = `CPU won- ${CPUWins} games`
+                        SubText3.innerText = `You won- ${PlayerWins} games`
+
+                        BackBtn.className = 'noDisplay';
+
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerWins = 0;
+                        CPUWins = 0;
+
+                        CPUPlayBool = false;
+                        CPUBestOf3Bool = false;
+                    }else{
+                        RockBtn.className = 'general-btn btn choice-btns';
+                        PaperBtn.className = 'general-btn btn choice-btns';
+                        ScissorBtn.className = 'general-btn btn choice-btns';
+                        LizardBtn.className = 'general-btn btn choice-btns';
+                        SpockBtn.className = 'general-btn btn choice-btns';
+
+                        SubText2.innerText = 'You Lose. Choose your fighter!';
+                    }
+                }else{
+                    console.log(userChoice);
+                    console.log(CPUChoice);
+                    console.log(PlayerWins)
+                    console.log(CPUWins);
+                    RockBtn.className = 'general-btn btn choice-btns';
+                    PaperBtn.className = 'general-btn btn choice-btns';
+                    ScissorBtn.className = 'general-btn btn choice-btns';
+                    LizardBtn.className = 'general-btn btn choice-btns';
+                    SpockBtn.className = 'general-btn btn choice-btns';
+
+                    SubText2.innerText = "You Tie. Choose your fighter!";
+                }
+                break;
+
+            case "paper":
+                if(CPUChoice == 'rock' || CPUChoice == 'spock'){
+                    PlayerWins++;
+
+                    if(PlayerWins >= 2 || CPUWins >= 2){
+                        if(PlayerWins == 2){
+                            SubText1.innerText = 'You Win';
+                        }else{
+                            SubText1.innerText = 'You Lose';
+                        }
+                        SubText2.innerText = `CPU won- ${CPUWins} games`
+                        SubText3.innerText = `You won- ${PlayerWins} games`
+
+                        BackBtn.className = 'noDisplay';
+
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerWins = 0;
+                        CPUWins = 0;
+
+                        CPUPlayBool = false;
+                        CPUBestOf3Bool = false;
+                    }else{
+                        RockBtn.className = 'general-btn btn choice-btns';
+                        PaperBtn.className = 'general-btn btn choice-btns';
+                        ScissorBtn.className = 'general-btn btn choice-btns';
+                        LizardBtn.className = 'general-btn btn choice-btns';
+                        SpockBtn.className = 'general-btn btn choice-btns';
+
+                        SubText2.innerText = 'You Win! Choose your fighter!';
+                    }
+                }else if(CPUChoice == 'scissors' || CPUChoice == 'lose'){
+                    CPUWins++;
+
+                    if(PlayerWins >= 2 || CPUWins >= 2){
+                        if(PlayerWins == 2){
+                            SubText1.innerText = 'You Win';
+                        }else{
+                            SubText1.innerText = 'You Lose';
+                        }
+                        SubText2.innerText = `CPU won- ${CPUWins} games`
+                        SubText3.innerText = `You won- ${PlayerWins} games`
+
+                        BackBtn.className = 'noDisplay';
+
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerWins = 0;
+                        CPUWins = 0;
+
+                        CPUPlayBool = false;
+                        CPUBestOf3Bool = false;
+                    }else{
+                        RockBtn.className = 'general-btn btn choice-btns';
+                        PaperBtn.className = 'general-btn btn choice-btns';
+                        ScissorBtn.className = 'general-btn btn choice-btns';
+                        LizardBtn.className = 'general-btn btn choice-btns';
+                        SpockBtn.className = 'general-btn btn choice-btns';
+
+                        SubText2.innerText = 'You Lose. Choose your fighter!';
+                    }
+                }else{
+                    RockBtn.className = 'general-btn btn choice-btns';
+                    PaperBtn.className = 'general-btn btn choice-btns';
+                    ScissorBtn.className = 'general-btn btn choice-btns';
+                    LizardBtn.className = 'general-btn btn choice-btns';
+                    SpockBtn.className = 'general-btn btn choice-btns';
+
+                    SubText2.innerText = "You Tie. Choose your fighter!";
+                }
+                break;
+                
+            case "scissors":
+                if(CPUChoice == 'paper' || CPUChoice == 'lizard'){
+                    PlayerWins++;
+
+                    if(PlayerWins >= 2 || CPUWins >= 2){
+                        if(PlayerWins == 2){
+                            SubText1.innerText = 'You Win';
+                        }else{
+                            SubText1.innerText = 'You Lose';
+                        }
+                        SubText2.innerText = `CPU won- ${CPUWins} games`
+                        SubText3.innerText = `You won- ${PlayerWins} games`
+
+                        BackBtn.className = 'noDisplay';
+
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerWins = 0;
+                        CPUWins = 0;
+
+                        CPUPlayBool = false;
+                        CPUBestOf3Bool = false;
+                    }else{
+                        RockBtn.className = 'general-btn btn choice-btns';
+                        PaperBtn.className = 'general-btn btn choice-btns';
+                        ScissorBtn.className = 'general-btn btn choice-btns';
+                        LizardBtn.className = 'general-btn btn choice-btns';
+                        SpockBtn.className = 'general-btn btn choice-btns';
+
+                        SubText2.innerText = 'You Win! Choose your fighter!';
+                    }
+                }else if(CPUChoice == 'rock' || CPUChoice == 'spock'){
+                    CPUWins++;
+
+                    if(PlayerWins >= 2 || CPUWins >= 2){
+                        if(PlayerWins == 2){
+                            SubText1.innerText = 'You Win';
+                        }else{
+                            SubText1.innerText = 'You Lose';
+                        }
+                        SubText2.innerText = `CPU won- ${CPUWins} games`
+                        SubText3.innerText = `You won- ${PlayerWins} games`
+
+                        BackBtn.className = 'noDisplay';
+
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerWins = 0;
+                        CPUWins = 0;
+
+                        CPUPlayBool = false;
+                        CPUBestOf3Bool = false;
+                    }else{
+                        RockBtn.className = 'general-btn btn choice-btns';
+                        PaperBtn.className = 'general-btn btn choice-btns';
+                        ScissorBtn.className = 'general-btn btn choice-btns';
+                        LizardBtn.className = 'general-btn btn choice-btns';
+                        SpockBtn.className = 'general-btn btn choice-btns';
+
+                        SubText2.innerText = 'You Lose. Choose your fighter!';
+                    }
+                }else{
+                    RockBtn.className = 'general-btn btn choice-btns';
+                    PaperBtn.className = 'general-btn btn choice-btns';
+                    ScissorBtn.className = 'general-btn btn choice-btns';
+                    LizardBtn.className = 'general-btn btn choice-btns';
+                    SpockBtn.className = 'general-btn btn choice-btns';
+
+                    SubText2.innerText = "You Tie. Choose your fighter!";
+                }
+                break;
+
+            case "lizard":
+                if(CPUChoice == 'paper' || CPUChoice == 'spock'){
+                    PlayerWins++;
+
+                    if(PlayerWins >= 2 || CPUWins >= 2){
+                        if(PlayerWins == 2){
+                            SubText1.innerText = 'You Win';
+                        }else{
+                            SubText1.innerText = 'You Lose';
+                        }
+                        SubText2.innerText = `CPU won- ${CPUWins} games`
+                        SubText3.innerText = `You won- ${PlayerWins} games`
+
+                        BackBtn.className = 'noDisplay';
+
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerWins = 0;
+                        CPUWins = 0;
+
+                        CPUPlayBool = false;
+                        CPUBestOf3Bool = false;
+                    }else{
+                        RockBtn.className = 'general-btn btn choice-btns';
+                        PaperBtn.className = 'general-btn btn choice-btns';
+                        ScissorBtn.className = 'general-btn btn choice-btns';
+                        LizardBtn.className = 'general-btn btn choice-btns';
+                        SpockBtn.className = 'general-btn btn choice-btns';
+
+                        SubText2.innerText = 'You Win! Choose your fighter!';
+                    }
+                }else if(CPUChoice == 'rock' || CPUChoice == 'scissors'){
+                    CPUWins++;
+
+                    if(PlayerWins >= 2 || CPUWins >= 2){
+                        if(PlayerWins == 2){
+                            SubText1.innerText = 'You Win';
+                        }else{
+                            SubText1.innerText = 'You Lose';
+                        }
+                        SubText2.innerText = `CPU won- ${CPUWins} games`
+                        SubText3.innerText = `You won- ${PlayerWins} games`
+
+                        BackBtn.className = 'noDisplay';
+
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerWins = 0;
+                        CPUWins = 0;
+
+                        CPUPlayBool = false;
+                        CPUBestOf3Bool = false;
+                    }else{
+                        RockBtn.className = 'general-btn btn choice-btns';
+                        PaperBtn.className = 'general-btn btn choice-btns';
+                        ScissorBtn.className = 'general-btn btn choice-btns';
+                        LizardBtn.className = 'general-btn btn choice-btns';
+                        SpockBtn.className = 'general-btn btn choice-btns';
+
+                        SubText2.innerText = 'You Lose. Choose your fighter!';
+                    }
+                }else{
+                    RockBtn.className = 'general-btn btn choice-btns';
+                    PaperBtn.className = 'general-btn btn choice-btns';
+                    ScissorBtn.className = 'general-btn btn choice-btns';
+                    LizardBtn.className = 'general-btn btn choice-btns';
+                    SpockBtn.className = 'general-btn btn choice-btns';
+
+                    SubText2.innerText = "You Tie. Choose your fighter!";
+                }
+                break;
+
+            case "spock":
+                if(CPUChoice == 'rock' || CPUChoice == 'scissos'){
+                    PlayerWins++;
+
+                    if(PlayerWins >= 2 || CPUWins >= 2){
+                        if(PlayerWins == 2){
+                            SubText1.innerText = 'You Win';
+                        }else{
+                            SubText1.innerText = 'You Lose';
+                        }
+                        SubText2.innerText = `CPU won- ${CPUWins} games`
+                        SubText3.innerText = `You won- ${PlayerWins} games`
+
+                        BackBtn.className = 'noDisplay';
+
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerWins = 0;
+                        CPUWins = 0;
+
+                        CPUPlayBool = false;
+                        CPUBestOf3Bool = false;
+                    }else{
+                        RockBtn.className = 'general-btn btn choice-btns';
+                        PaperBtn.className = 'general-btn btn choice-btns';
+                        ScissorBtn.className = 'general-btn btn choice-btns';
+                        LizardBtn.className = 'general-btn btn choice-btns';
+                        SpockBtn.className = 'general-btn btn choice-btns';
+
+                        SubText2.innerText = 'You Win! Choose your fighter!';
+                    }
+                }else if(CPUChoice == 'paper' || CPUChoice == 'lizard'){
+                    CPUWins++;
+
+                    if(PlayerWins >= 2 || CPUWins >= 2){
+                        if(PlayerWins == 2){
+                            SubText1.innerText = 'You Win';
+                        }else{
+                            SubText1.innerText = 'You Lose';
+                        }
+                        SubText2.innerText = `CPU won- ${CPUWins} games`
+                        SubText3.innerText = `You won- ${PlayerWins} games`
+
+                        BackBtn.className = 'noDisplay';
+
+                        RockBtn.className = 'noDisplay';
+                        PaperBtn.className = 'noDisplay';
+                        ScissorBtn.className = 'noDisplay';
+                        LizardBtn.className = 'noDisplay';
+                        SpockBtn.className = 'noDisplay';
+                        
+                        PlayAgainBtn.className = 'play-again-btn btn general-btn';
+                        QuitBtn.className = 'btn general-btn quit-btn';
+
+                        PlayerWins = 0;
+                        CPUWins = 0;
+
+                        CPUPlayBool = false;
+                        CPUBestOf3Bool = false;
+                    }else{
+                        RockBtn.className = 'general-btn btn choice-btns';
+                        PaperBtn.className = 'general-btn btn choice-btns';
+                        ScissorBtn.className = 'general-btn btn choice-btns';
+                        LizardBtn.className = 'general-btn btn choice-btns';
+                        SpockBtn.className = 'general-btn btn choice-btns';
+
+                        SubText2.innerText = 'You Lose. Choose your fighter!';
+                    }
+                }else{
+                    RockBtn.className = 'general-btn btn choice-btns';
+                    PaperBtn.className = 'general-btn btn choice-btns';
+                    ScissorBtn.className = 'general-btn btn choice-btns';
+                    LizardBtn.className = 'general-btn btn choice-btns';
+                    SpockBtn.className = 'general-btn btn choice-btns';
+
+                    SubText2.innerText = "You Tie. Choose your fighter!";
+                }
+                break;
+
+            default:
+                return "Error";     
+
         }
+        
     }
     
 
